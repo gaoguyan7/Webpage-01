@@ -1,0 +1,249 @@
+*{
+    padding: 0;margin: 0;
+}
+body,html{
+    height: 100%;
+    width: 100%;
+    /* 溢出隐藏 */
+    overflow: hidden;
+}
+input,a{
+    /* 相对于浏览器窗口定位 */
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 20%;
+}
+input{
+    z-index: 1000;
+    height: 40px;
+    opacity: 0;
+}
+a{
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: black ;
+    /* 透明度 */
+    opacity: 0.5;
+    color: white;
+    text-decoration: none;
+}
+#rad1,#rad1+a{left: 0;}
+#rad2,#rad2+a{left: 20%;}
+#rad3,#rad3+a{left: 40%;}
+#rad4,#rad4+a{left: 60%;}
+#rad5,#rad5+a{left: 80%;}
+/* :checked选择器，用于单选多选，表示当此元素处于被选中状态时 */
+#rad1:checked+a{
+    /* 圆角 */
+    border-radius: 8px;
+    background-color: chartreuse;
+}
+#rad2:checked+a{
+    /* 圆角 */
+    border-radius: 8px;
+    background-color: chartreuse;
+}
+#rad3:checked+a{
+    /* 圆角 */
+    border-radius: 8px;
+    background-color: chartreuse;
+}
+#rad4:checked+a{
+    /* 圆角 */
+    border-radius: 8px;
+    background-color: chartreuse;
+}
+#rad5:checked+a{
+    /* 圆角 */
+    border-radius: 8px;
+    background-color: chartreuse;
+}
+input:hover+a{
+    /* 圆角 */
+    border-radius: 5px;
+    height: 45px;
+    /* 加个过渡 */
+    transition: all linear 0.3;
+    background-color: rgb(198, 247, 149);
+
+}
+input:checked+a::after{
+    content: "";
+    width: 0;
+    height: 0;
+    /* 圆角 */
+    border-radius: 5px;
+    
+    border: 20px solid transparent;
+    border-bottom-color: chartreuse;
+    position: absolute;
+    bottom: 100%;
+    /* 这里50%的参照对象是可以被参考定位的父级容器 */
+    left: 50%;
+    /* 这里的50%的参照对象是元素自己 */
+    transform: translateX(-50%);
+}
+
+
+
+.box{
+    position: relative;
+    height: 100%;width: 100%;
+    z-index: -1;
+    /* 过渡属性 */
+    transition: all 0.5s ;
+}
+.box .st1,.st2,.st3,.st4,.st5{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.box .st1{
+    /* 加个图片 */
+    background: url("人间烟火.jpg") no-repeat center;
+    background-size: cover;
+    /* 不压缩。不变型 */
+    background-color: rgb(207, 207, 133);
+}
+.box .st2{
+    /* 加个图片 */
+    background: url("往事酒杯.jpg") no-repeat center;
+    background-size: cover;
+    /* 不压缩。不变型 */
+    background-color: rgb(178, 113, 239);
+}
+.box .st3{
+    /* 加个图片 */
+    background: url("时间.jpg") no-repeat center;
+    background-size: cover;
+    /* 不压缩。不变型 */
+    background-color: rgb(123, 223, 223);
+}
+.box .st4{
+    /* 加个图片 */
+    background: url("站.jpg") no-repeat center;
+    background-size: cover;
+    /* 不压缩。不变型 */
+    background-color: rgb(150, 155, 145);
+}
+.box .st5{
+    /* 加个图片 */
+    background: url("爱.jpg") no-repeat center;
+    background-size: cover;
+    /* 不压缩。不变型 */
+    background-color: rgb(202, 150, 112);
+}
+#rad2:checked~.box{
+    transform: translateY(-100%);
+}
+#rad3:checked~.box{
+    transform: translateY(-200%);
+}
+#rad4:checked~.box{
+    transform: translateY(-300%);
+}
+#rad5:checked~.box{
+    transform: translateY(-400%);
+}
+.box .st-con{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(228, 72, 113);
+    /* 透明度 */
+    /* opacity: 0.5; */
+    position: absolute;
+    left: 50%;
+    top: 0;
+    margin-left: -100px;
+    /* 注意变形顺序 */
+    transform: translateY(-50%) rotate(45deg);
+}
+.st-con span{
+    color: white;
+    font-weight: 600;
+    font-size: 60px;
+    display: block;
+    
+    width: 120px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    position: absolute;
+    right: 0;bottom: 0;
+    transform: rotate(-45deg)  translateY(-45%);
+    left: 110px;
+    
+
+    /* transform: rotate(-45deg) translateY(-25%); */
+    /* transform: rotate(-45deg) translateY(-25%); */
+}
+/* 主题内容样式 */
+.st h2{
+    color: rgb(252, 140, 96);
+    font-size: 60px;
+    width: 50%;
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    margin-left: -25%;
+    /* 设置文字阴影 */
+    text-shadow: 2px 2px 1px rgba(255, 160, 122, 0.409);
+}
+#rad1:checked~.box .st1 h2,
+#rad2:checked~.box .st2 h2,
+#rad3:checked~.box .st3 h2,
+#rad4:checked~.box .st4 h2,
+#rad5:checked~.box .st5 h2{
+    /* 
+    backwards使这个元素在执行动画之前保持动画第一帧的样子
+    */
+    animation: moveDown 1s ease 0.2s backwards;
+    
+}
+@keyframes moveDown{
+    0%{
+        transform: translateY(-20px);
+        opacity: 0;
+
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+.st p{
+    position: absolute;
+    width: 46%;
+    text-align: center;
+    top: 55%;
+    left: 27%;
+    color: rgb(65, 248, 187);
+}
+#rad1:checked~.box .st1 p,
+#rad2:checked~.box .st2 p,
+#rad3:checked~.box .st3 p,
+#rad4:checked~.box .st4 p,
+#rad5:checked~.box .st5 p{
+    /* 
+    backwards使这个元素在执行动画之前保持动画第一帧的样子
+    */
+    animation: moveUp 1s ease 0.2s backwards;
+    
+}
+
+@keyframes moveUp{
+    0%{
+        transform: translateY(20px);
+        opacity: 0;
+
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
